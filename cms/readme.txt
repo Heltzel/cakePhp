@@ -1,0 +1,1 @@
+ bin/cake bake migration CreateProducts name:string price:float created modified
