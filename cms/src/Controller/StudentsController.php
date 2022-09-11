@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use function PHPUnit\Framework\assertIsArray;
-
 /**
  * Students Controller
  *
@@ -14,6 +12,7 @@ use function PHPUnit\Framework\assertIsArray;
  */
 class StudentsController extends AppController
 {
+    protected $students;
     /**
      * Index method
      *
@@ -21,11 +20,11 @@ class StudentsController extends AppController
      */
     public function index()
     {
-        $students = $this->Students->find('all');
-
-        echo json_encode($students);
-        exit();
-        // $this->set(compact('students'));
+        $students = $this->paginate($this->students);
+        $this->set(compact('students'));
+        // $students = $this->Students->find('all');
+        // echo json_encode($students);
+        // exit();
     }
 
     /**
